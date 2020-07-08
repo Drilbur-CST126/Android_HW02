@@ -14,7 +14,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private var date: Date? = null
     private var username = ""
-    private var password = ""
+    private var password = "" // Note: While stored as a string, this is always hashed and salted
     private var gender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,8 +64,17 @@ class MainActivity : AppCompatActivity() {
         return today.get(Calendar.YEAR)
     }
 
+    private fun showOutput() {
+        linear_displayInfo!!.visibility = View.VISIBLE
+        txt_usernamePrint!!.text = getString(R.string.txt_usernamePrint, username)
+        txt_passwordPrint!!.text = getString(R.string.txt_passwordPrint, password)
+        txt_dobPrint!!.text = getString(R.string.txt_dobPrint, getAge())
+        txt_genderPrint!!.text = getString(R.string.txt_genderPrint, gender)
+    }
+
     fun submitOnClick(_view: View) {
-        txt_error!!.visibility = View.INVISIBLE
+        txt_error!!.visibility = View.GONE
+        linear_displayInfo!!.visibility = View.INVISIBLE
         val argon2 = Argon2Kt()
         val hashResult = argon2.hash(
             mode = Argon2Mode.ARGON2_I,
@@ -98,6 +107,7 @@ class MainActivity : AppCompatActivity() {
         } else if (verified) {
             if (getAge() >= 13) {
                 password = hashResult.encodedOutputAsString()
+                showOutput()
             } else {
                 txt_error!!.text = getString(R.string.txt_ageError)
                 txt_error!!.visibility = View.VISIBLE

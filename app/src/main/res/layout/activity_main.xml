@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_ageError"
             android:textColor="@color/colorError"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/linear_displayInfo"
@@ -38,25 +38,25 @@
                 android:id="@+id/txt_usernamePrint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_usernamePrint" />
+                android:text="@string/txt_placeholder" />
 
             <TextView
                 android:id="@+id/txt_passwordPrint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_passwordPrint" />
+                android:text="@string/txt_placeholder" />
 
             <TextView
                 android:id="@+id/txt_dobPrint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_yearsOld" />
+                android:text="@string/txt_placeholder" />
 
             <TextView
                 android:id="@+id/txt_genderPrint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_youAre" />
+                android:text="@string/txt_placeholder" />
 
         </LinearLayout>
 
